@@ -1,6 +1,6 @@
-/* Tambah Asisten */
+/* Tambah Vendor */
 const btnTambah = document.getElementById('btnTambah');
-const popup = document.querySelector('.tambah-asisten');
+const popup = document.querySelector('.tambah-vendor');
 const btnClose = document.getElementById('btnCloseTambah');
 
 const formTambah = document.getElementById('formTambah');
@@ -17,10 +17,11 @@ formTambah.addEventListener('submit', (e) => {
 
     // ambil semua input dalam form
     const formData = new FormData(formTambah);
-    const nama = formData.get('nama-asisten');
+    const namaPemilik = formData.get('nama-pemilik');
+    const namaVendor = formData.get('nama-vendor');
     const alamat = formData.get('alamat');
     const kontak = formData.get('kontak');
-    const email = formData.get('email');
+    const jenis = formData.get('jenis-vendor');
 
     // hitung id baru
     const newId = tbody.children.length + 1;
@@ -29,10 +30,11 @@ formTambah.addEventListener('submit', (e) => {
     const newTr = document.createElement('tr');
     newTr.innerHTML = `
             <td>${newId}</td>
-            <td>${nama}</td>
+            <td>${namaPemilik}</td>
+            <td>${namaVendor}</td>
             <td>${alamat}</td>
             <td>${kontak}</td>
-            <td>${email}</td>
+            <td>${jenis}</td>
             <td><button class="edit">Edit</td>
             <td><button class="hapus">Hapus</td>
     `
@@ -55,10 +57,11 @@ function attachEditEvents(){
             // ambil isi kolom (td)
             const cells = rowToEdit.querySelectorAll('td');
 
-            document.getElementById('editNama').value = cells[1].textContent;
-            document.getElementById('editAlamat').value = cells[2].textContent;
-            document.getElementById('editKontak').value = cells[3].textContent;
-            document.getElementById('editEmail').value = cells[4].textContent;
+            document.getElementById('namaPemilik').value = cells[1].textContent;
+            document.getElementById('namaVendor').value = cells[2].textContent;
+            document.getElementById('alamat').value = cells[3].textContent;
+            document.getElementById('kontak').value = cells[4].textContent;
+            document.getElementById('jenisVendor').value = cells[5].textContent;
 
             popupEdit.style.display = 'flex'; // tampilkan popup
         });
@@ -87,9 +90,9 @@ btnClose.onclick = () => {
 };
 
 
-/* Edit Asisten */
+/* Edit Vendor */
 const btnEdit = document.querySelectorAll('.edit');
-const popupEdit = document.querySelector('.edit-asisten');
+const popupEdit = document.querySelector('.edit-vendor');
 const btnCloseEdit = document.querySelector('#btnCloseEdit');
 const btnSimpanEdit = document.querySelector('#btnSimpanEdit');
 
@@ -103,27 +106,29 @@ btnEdit.forEach(button => {
         // ambil isi kolom (td)
         const cells = rowToEdit.querySelectorAll('td');
 
-        document.getElementById('editNama').value = cells[1].textContent;
-        document.getElementById('editAlamat').value = cells[2].textContent;
-        document.getElementById('editKontak').value = cells[3].textContent;
-        document.getElementById('editEmail').value = cells[4].textContent;
+        document.getElementById('namaPemilik').value = cells[1].textContent;
+        document.getElementById('namaVendor').value = cells[2].textContent;
+        document.getElementById('alamat').value = cells[3].textContent;
+        document.getElementById('kontak').value = cells[4].textContent;
+        document.getElementById('jenisVendor').value = cells[5].textContent;
 
         popupEdit.style.display = 'flex'; // tampilkan popup
     });
 });
 
 // simpan hasil edit terbaru
-const formEdit = document.getElementById('formEdit');
-formEdit.addEventListener('submit', (e) => {
+const formEditVendor = document.getElementById('formEditVendor');
+formEditVendor.addEventListener('submit', (e) => {
     e.preventDefault();
 
     if(rowToEdit){
         const cells = rowToEdit.querySelectorAll('td');
 
-        cells[1].textContent = document.getElementById('editNama').value;
-        cells[2].textContent = document.getElementById('editAlamat').value;
-        cells[3].textContent = document.getElementById('editKontak').value;
-        cells[4].textContent = document.getElementById('editEmail').value;
+        cells[1].textContent = document.getElementById('namaPemilik').value;
+        cells[2].textContent = document.getElementById('namaVendor').value;
+        cells[3].textContent = document.getElementById('alamat').value;
+        cells[4].textContent = document.getElementById('kontak').value;
+        cells[5].textContent = document.getElementById('jenisVendor').value;
     }
 
     popupEdit.style.display = 'none'; // tutup kembali popup
