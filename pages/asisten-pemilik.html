@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selaras Organizer</title>
     <link rel="stylesheet" href="../styles/asisten-pemilik.css">
+    <script src="../script/asistenPemilik.js" defer></script>
 </head>
 <body>
     <header>
@@ -29,7 +30,7 @@
         <h1>Daftar Asisten</h1>
         
         <div class="table-container">
-            <table>
+            <table> 
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -49,35 +50,35 @@
                         <td>Jl Taman Kopo Indah</td>
                         <td>0812345678</td>
                         <td>abigail@gmail.com</td>
-                        <td><button>Edit</button></td>
-                        <td><button>Hapus</button></td>
+                        <td><button class="edit">Edit</button></td>
+                        <td><button class="hapus">Hapus</button></td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Abigail Maharani</td>
-                        <td>Jl Taman Kopo Indah</td>
+                        <td>Max Indrawan</td>
+                        <td>Jl Bukit Indah</td>
                         <td>0812345678</td>
-                        <td>abigail@gmail.com</td>
-                        <td><button>Edit</button></td>
-                        <td><button>Hapus</button></td>
+                        <td>indrawan@gmail.com</td>
+                        <td><button class="edit">Edit</button></td>
+                        <td><button class="hapus">Hapus</button></td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>Abigail Maharani</td>
-                        <td>Jl Taman Kopo Indah</td>
+                        <td>Michael Christian</td>
+                        <td>Jl Ranca Bentang 17</td>
                         <td>0812345678</td>
-                        <td>abigail@gmail.com</td>
-                        <td><button>Edit</button></td>
-                        <td><button>Hapus</button></td>
+                        <td>michael@gmail.com</td>
+                        <td><button class="edit">Edit</button></td>
+                        <td><button class="hapus">Hapus</button></td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Abigail Maharani</td>
-                        <td>Jl Taman Kopo Indah</td>
+                        <td>Agatha Tasya</td>
+                        <td>Jl Ciumbuleuit</td>
                         <td>0812345678</td>
-                        <td>abigail@gmail.com</td>
-                        <td><button>Edit</button></td>
-                        <td><button>Hapus</button></td>
+                        <td>tasya@gmail.com</td>
+                        <td><button class="edit">Edit</button></td>
+                        <td><button class="hapus">Hapus</button></td>
                     </tr>
                     <tr>
                         <td>5</td>
@@ -85,8 +86,8 @@
                         <td>Jl Taman Kopo Indah</td>
                         <td>0812345678</td>
                         <td>abigail@gmail.com</td>
-                        <td><button>Edit</button></td>
-                        <td><button>Hapus</button></td>
+                        <td><button class="edit">Edit</button></td>
+                        <td><button class="hapus">Hapus</button></td>
                     </tr>
                     <tr>
                         <td>6</td>
@@ -94,32 +95,62 @@
                         <td>Jl Taman Kopo Indah</td>
                         <td>0812345678</td>
                         <td>abigail@gmail.com</td>
-                        <td><button>Edit</button></td>
-                        <td><button>Hapus</button></td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Abigail Maharani</td>
-                        <td>Jl Taman Kopo Indah</td>
-                        <td>0812345678</td>
-                        <td>abigail@gmail.com</td>
-                        <td><button>Edit</button></td>
-                        <td><button>Hapus</button></td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>Abigail Maharani</td>
-                        <td>Jl Taman Kopo Indah</td>
-                        <td>0812345678</td>
-                        <td>abigail@gmail.com</td>
-                        <td><button>Edit</button></td>
-                        <td><button>Hapus</button></td>
+                        <td><button class="edit">Edit</button></td>
+                        <td><button class="hapus">Hapus</button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
         
-        <button>Tambah Asisten</button>
+        <button id="btnTambah">Tambah Asisten</button>
+
+        <!-- PopUp Tambah Asisten -->
+        <div class="tambah-asisten">
+            <div class="popup-content">
+                <form id="formTambah" action="" method="">
+                    <h3>Tambah Asisten</h3>
+                    <input type="text" name="nama-asisten" placeholder="Nama Asisten" required>
+                    <input type="text" name="alamat" placeholder="Alamat" required>
+                    <input type="text" name="kontak" placeholder="Kontak" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <div>
+                        <input type="button" id="btnCloseTambah" value="Tutup">
+                        <input type="submit" id="btnSimpanTambah" value="Simpan">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- PopUp Edit Asisten -->
+        <div class="edit-asisten">
+            <div class="popup-content">
+                <form id="formEdit" action="" method="">
+                    <h3>Edit Asisten</h3>
+                    <input type="text" id="editNama" name="nama-asisten" required>
+                    <input type="text" id="editAlamat" required>
+                    <input type="text" id="editKontak" required>
+                    <input type="email" id="editEmail" required>
+                    <div>
+                        <input type="button" id="btnCloseEdit" value="Tutup">
+                        <input type="submit" id="btnSimpanEdit" value="Simpan">
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- PopUp Hapus Asisten -->
+        <div class="hapus-asisten">
+            <div class="popup-content">
+                <h3>Konfirmasi Hapus</h3>
+                <p>Apakah Anda yakin ingin menghapus data ini?</p>
+                <div>
+                    <input type="button" id="btnCloseHapus" value="Tutup">
+                    <input type="button" id="btnConfirmHapus" value="Ya">
+                </div>
+            </div>
+        </div>
+
+
     </section>
 </body>
 </html>
