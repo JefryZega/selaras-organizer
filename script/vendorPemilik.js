@@ -139,12 +139,20 @@ btnCloseEdit.onclick = () => {
 };
 
 
-/* Hapus Asisten */
+/* Hapus Vendor */
 const btnHapus = document.querySelectorAll('.hapus')
-const popupHapus = document.querySelector('.hapus-asisten')
+const popupHapus = document.querySelector('.hapus-vendor')
 const btnCloseHapus = document.getElementById('btnCloseHapus');
 const btnConfirmHapus = document.getElementById('btnConfirmHapus')
 let rowToDelete = null;
+
+// fungsi untuk menyesuaikan id saat baris data tertentu dihapus
+function updateTableIds() {
+    const rows = document.querySelectorAll('tbody tr');
+    rows.forEach((row, index) => {
+        row.querySelector('td').textContent = index + 1;
+    });
+}
 
 // Pop up Hapus
 btnHapus.forEach(button => {
@@ -155,6 +163,7 @@ btnHapus.forEach(button => {
         btnConfirmHapus.addEventListener('click', () => {
             if(rowToDelete){
                 rowToDelete.remove();  // hapus baris dari tabel
+                updateTableIds();
             }
             popupHapus.style.display = 'none';
         });

@@ -1,9 +1,9 @@
-/* Tambah Asisten */
+/* Tambah Vendor */
 const btnTambah = document.getElementById('btnTambah');
-const popup = document.querySelector('.tambah-asisten');
+const popup = document.querySelector('.tambah-jenis-vendor');
 const btnClose = document.getElementById('btnCloseTambah');
 
-const formTambah = document.getElementById('formTambah');
+const formTambahJenisVendor = document.getElementById('formTambahJenisVendor');
 const btnSimpanTambah = document.getElementById('btnSimpanTambah');
 const tbody = document.querySelector('tbody');
 
@@ -11,16 +11,19 @@ btnTambah.onclick = () => {
   popup.style.display = 'flex';
 };
 
-// tambah asisten baru
-formTambah.addEventListener('submit', (e) => {
+function formatRupiah(angka) {
+    return "Rp " + Number(angka).toLocaleString('id-ID');
+}
+
+// tambah jenis vendor baru
+formTambahJenisVendor.addEventListener('submit', (e) => {
     e.preventDefault();
 
     // ambil semua input dalam form
-    const formData = new FormData(formTambah);
-    const nama = formData.get('nama-asisten');
-    const alamat = formData.get('alamat');
-    const kontak = formData.get('kontak');
-    const email = formData.get('email');
+    const formData = new FormData(formTambahJenisVendor);
+    const kisaranMinimal = formData.get('kisaran-minimal');
+    const kisaranMaksimal = formData.get('kisaran-maksimal');
+    const jenisVendor = formData.get('jenis-vendor');
 
     // hitung id baru
     const newId = tbody.children.length + 1;
@@ -29,10 +32,9 @@ formTambah.addEventListener('submit', (e) => {
     const newTr = document.createElement('tr');
     newTr.innerHTML = `
             <td>${newId}</td>
-            <td>${nama}</td>
-            <td>${alamat}</td>
-            <td>${kontak}</td>
-            <td>${email}</td>
+            <td>${formatRupiah(kisaranMinimal)}</td>
+            <td>${formatRupiah(kisaranMaksimal)}</td>
+            <td>${jenisVendor}</td>
             <td><button class="edit">Edit</td>
             <td><button class="hapus">Hapus</td>
     `
@@ -40,7 +42,7 @@ formTambah.addEventListener('submit', (e) => {
     tbody.appendChild(newTr);
 
     popup.style.display = 'none';
-    formTambah.reset();
+    formTambahJenisVendor.reset();
 
     attachEditEvents();
     attachHapusEvents();
@@ -54,14 +56,13 @@ function attachEditEvents(){
 
             // ambil isi kolom (td)
             const cells = rowToEdit.querySelectorAll('td');
-
-            document.getElementById('editNama').value = cells[1].textContent;
-            document.getElementById('editAlamat').value = cells[2].textContent;
-            document.getElementById('editKontak').value = cells[3].textContent;
-            document.getElementById('editEmail').value = cells[4].textContent;
+            
+            document.getElementById('kisaranMinimal').value = cells[1].textContent.replace(/\D/g, '');;
+            document.getElementById('kisaranMaksimal').value = cells[2].textContent.replace(/\D/g, '');;
+            document.getElementById('jenisVendor').value = cells[3].textContent;
 
             popupEdit.style.display = 'flex'; // tampilkan popup
-        });
+        })
     });
 }
 
@@ -87,12 +88,11 @@ btnClose.onclick = () => {
 };
 
 
-/* Edit Asisten */
+/* Edit Jenis Vendor */
 const btnEdit = document.querySelectorAll('.edit');
-const popupEdit = document.querySelector('.edit-asisten');
+const popupEdit = document.querySelector('.edit-jenis-vendor');
 const btnCloseEdit = document.querySelector('#btnCloseEdit');
 const btnSimpanEdit = document.querySelector('#btnSimpanEdit');
-
 let rowToEdit = null; // simpan baris yang akan diedit
 
 // Pop Up Edit
@@ -102,28 +102,26 @@ btnEdit.forEach(button => {
 
         // ambil isi kolom (td)
         const cells = rowToEdit.querySelectorAll('td');
-
-        document.getElementById('editNama').value = cells[1].textContent;
-        document.getElementById('editAlamat').value = cells[2].textContent;
-        document.getElementById('editKontak').value = cells[3].textContent;
-        document.getElementById('editEmail').value = cells[4].textContent;
+        
+        document.getElementById('kisaranMinimal').value = cells[1].textContent.replace(/\D/g, '');;
+        document.getElementById('kisaranMaksimal').value = cells[2].textContent.replace(/\D/g, '');;
+        document.getElementById('jenisVendor').value = cells[3].textContent;
 
         popupEdit.style.display = 'flex'; // tampilkan popup
     });
 });
 
 // simpan hasil edit terbaru
-const formEdit = document.getElementById('formEdit');
-formEdit.addEventListener('submit', (e) => {
+const formEditJenisVendor = document.getElementById('formEditJenisVendor');
+formEditJenisVendor.addEventListener('submit', (e) => {
     e.preventDefault();
 
     if(rowToEdit){
         const cells = rowToEdit.querySelectorAll('td');
 
-        cells[1].textContent = document.getElementById('editNama').value;
-        cells[2].textContent = document.getElementById('editAlamat').value;
-        cells[3].textContent = document.getElementById('editKontak').value;
-        cells[4].textContent = document.getElementById('editEmail').value;
+        cells[1].textContent = formatRupiah(document.getElementById('kisaranMinimal').value);
+        cells[2].textContent = formatRupiah(document.getElementById('kisaranMaksimal').value);
+        cells[3].textContent = document.getElementById('jenisVendor').value;
     }
 
     popupEdit.style.display = 'none'; // tutup kembali popup
@@ -134,9 +132,9 @@ btnCloseEdit.onclick = () => {
 };
 
 
-/* Hapus Asisten */
+/* Hapus Jenis Vendor */
 const btnHapus = document.querySelectorAll('.hapus')
-const popupHapus = document.querySelector('.hapus-asisten')
+const popupHapus = document.querySelector('.hapus-jenis-vendor')
 const btnCloseHapus = document.getElementById('btnCloseHapus');
 const btnConfirmHapus = document.getElementById('btnConfirmHapus')
 let rowToDelete = null;
