@@ -244,24 +244,24 @@ td > button {
   align-items: center;
 }
 
-.edit-klien > form {
+#formEditKlien {
   background: #ffffff;
   padding: 2em;
   border-radius: 1em;
   width: 50rem;
-  height: 25rem;
+  height: 20rem;
   display: flex;
   flex-direction: column;
   gap: 1.5em;
 }
 
-.edit-klien > form > input {
+#formEditKlien > input {
     padding: 0.5em;
     border: 1px solid;
     border-radius: 0.5em;
 }
 
-.edit-klien > form > div {
+#formEditKlien > div {
     margin-top: 1em;
     text-align: end;
     word-spacing: 1em;
