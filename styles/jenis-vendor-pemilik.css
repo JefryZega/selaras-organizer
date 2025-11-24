@@ -39,7 +39,7 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    color: #ffffff;
+    color: white;
 }
 
 nav > img:first-of-type {
@@ -66,7 +66,7 @@ li:hover {
     transition: 0.5s;
 }
 
-li:nth-of-type(2) {
+li:nth-of-type(4) {
     background-color: #188187;
 }
 
@@ -132,7 +132,7 @@ a {
 table thead th {
     position: sticky;
     top: 0;
-    background: #ffffff;
+    background: white;
     z-index: 0;
 }
 
@@ -176,8 +176,8 @@ td > button {
 }
 
 
-/* Tambah Asisten */
-.tambah-asisten {
+/* Fitur Tambah Jenis Vendor */
+.tambah-jenis-vendor {
   position: fixed;
   top: 0;
   left: 0;
@@ -194,7 +194,7 @@ form {
   padding: 2em;
   border-radius: 1em;
   width: 50rem;
-  height: 25rem;
+  height: 20rem;
   display: flex;
   flex-direction: column;
   gap: 1.5em;
@@ -231,8 +231,8 @@ form>div {
 }
 
 
-/* Edit Asisten */
-.edit-asisten {
+/* Fitur Edit Jenis Vendor */
+.edit-jenis-vendor {
   position: fixed;
   top: 0;
   left: 0;
@@ -244,7 +244,7 @@ form>div {
   align-items: center;
 }
 
-.edit-asisten>form {
+.edit-vendor>form {
   background: #ffffff;
   padding: 2em;
   border-radius: 1em;
@@ -255,13 +255,13 @@ form>div {
   gap: 1.5em;
 }
 
-.edit-asisten > form > input {
+.edit-jenis-vendor > form > input {
     padding: 0.5em;
     border: 1px solid;
     border-radius: 0.5em;
 }
 
-.edit-asisten > form > div {
+.edit-vendor > form > div {
     margin-top: 1em;
     text-align: end;
     word-spacing: 1em;
@@ -286,8 +286,8 @@ form>div {
 }
 
 
-/* Hapus Asisten */
-.hapus-asisten {
+/* Fitur Hapus Asisten */
+.hapus-jenis-vendor {
   position: fixed;
   top: 0;
   left: 0;
@@ -299,7 +299,7 @@ form>div {
   align-items: center;
 }
 
-.hapus-asisten .popup-content {
+.hapus-jenis-vendor .popup-content {
   background: #ffffff;
   padding: 2em;
   border-radius: 1em;
@@ -310,7 +310,7 @@ form>div {
   gap: 1.5em;
 }
 
-.hapus-asisten .popup-content div {
+.hapus-jenis-vendor .popup-content div {
     text-align: end;
     word-spacing: 1em;
 }

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selaras Organizer</title>
-    <link rel="stylesheet" href="../styles/asisten-pemilik.css">
-    <script src="../script/asistenPemilik.js" defer></script>
+    <link rel="stylesheet" href="../styles/vendor-pemilik.css">
+    <script src="../script/vendorPemilik.js" defer></script>
 </head>
 <body>
     <header>
@@ -13,8 +13,8 @@
             <img src="../assets/img/selaras-logo.png" alt="logo selaras organizer">
             <ul>
                 <li><a href="dashboard-pemilik.html">Dashboard</a></li>
-                <li>Asisten</li>
-                <li><a href="vendor-pemilik.html">Vendor</a></li>
+                <li><a href="asisten-pemilik.html">Asisten</a></li>
+                <li>Vendor</li>
                 <li><a href="jenis-vendor-pemilik.html">Jenis Vendor</a></li>
                 <li><a href="laporan-pemilik.html">Laporan</a></li>
             </ul>
@@ -27,17 +27,18 @@
 
     <section class="main-section">
         <button>Back</button>
-        <h1>Daftar Asisten</h1>
+        <h1>Daftar Vendor</h1>
         
         <div class="table-container">
-            <table> 
+            <table>
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Nama</th>
+                        <th scope="col">Nama Pemilik</th>
+                        <th scope="col">Nama Vendor</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">Kontak</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">Jenis</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>    
@@ -47,54 +48,70 @@
                     <tr>
                         <td>1</td>
                         <td>Abigail Maharani</td>
+                        <td>MatTrans</td>
                         <td>Jl Taman Kopo Indah</td>
                         <td>0812345678</td>
-                        <td>abigail@gmail.com</td>
+                        <td>Transportasi</td>
                         <td><button class="edit">Edit</button></td>
                         <td><button class="hapus">Hapus</button></td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Max Indrawan</td>
-                        <td>Jl Bukit Indah</td>
+                        <td>Abigail Maharani</td>
+                        <td>Fun With You</td>
+                        <td>Jl Taman Kopo Indah</td>
                         <td>0812345678</td>
-                        <td>indrawan@gmail.com</td>
+                        <td>Hiburan</td>
                         <td><button class="edit">Edit</button></td>
                         <td><button class="hapus">Hapus</button></td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>Michael Christian</td>
-                        <td>Jl Ranca Bentang 17</td>
+                        <td>Abigail Maharani</td>
+                        <td>Tata Catering</td>
+                        <td>Jl Taman Kopo Indah</td>
                         <td>0812345678</td>
-                        <td>michael@gmail.com</td>
+                        <td>Catering</td>
                         <td><button class="edit">Edit</button></td>
                         <td><button class="hapus">Hapus</button></td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Agatha Tasya</td>
-                        <td>Jl Ciumbuleuit</td>
+                        <td>Abigail Maharani</td>
+                        <td>Badoet</td>
+                        <td>Jl Taman Kopo Indah</td>
                         <td>0812345678</td>
-                        <td>tasya@gmail.com</td>
+                        <td>Dekorasi</td>
                         <td><button class="edit">Edit</button></td>
                         <td><button class="hapus">Hapus</button></td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td>Abigail Maharani</td>
+                        <td>Jojo Print</td>
                         <td>Jl Taman Kopo Indah</td>
                         <td>0812345678</td>
-                        <td>abigail@gmail.com</td>
+                        <td>Percetakan</td>
                         <td><button class="edit">Edit</button></td>
                         <td><button class="hapus">Hapus</button></td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>Abigail Maharani</td>
+                        <td>Tata Catering</td>
                         <td>Jl Taman Kopo Indah</td>
                         <td>0812345678</td>
-                        <td>abigail@gmail.com</td>
+                        <td>Transportasi</td>
+                        <td><button class="edit">Edit</button></td>
+                        <td><button class="hapus">Hapus</button></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Abigail Maharani</td>
+                        <td>Tata Catering</td>
+                        <td>Jl Taman Kopo Indah</td>
+                        <td>0812345678</td>
+                        <td>Transportasi</td>
                         <td><button class="edit">Edit</button></td>
                         <td><button class="hapus">Hapus</button></td>
                     </tr>
@@ -102,17 +119,18 @@
             </table>
         </div>
         
-        <button id="btnTambah">Tambah Asisten</button>
+        <button id="btnTambah">Tambah Vendor</button>
 
-        <!-- PopUp Tambah Asisten -->
-        <div class="tambah-asisten">
+        <!-- PopUp Tambah Vendor -->
+        <div class="tambah-vendor">
             <div class="popup-content">
                 <form id="formTambah" action="" method="">
-                    <h3>Tambah Asisten</h3>
-                    <input type="text" name="nama-asisten" placeholder="Nama Asisten" required>
+                    <h3>Tambah Vendor</h3>
+                    <input type="text" name="nama-pemilik" placeholder="Nama Pemilik" required>
+                    <input type="text" name="nama-vendor" placeholder="Nama Vendor" required>
                     <input type="text" name="alamat" placeholder="Alamat" required>
                     <input type="number" name="kontak" placeholder="Kontak" required>
-                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="text" name="jenis-vendor" placeholder="Jenis Vendor" required>
                     <div>
                         <input type="button" id="btnCloseTambah" value="Tutup">
                         <input type="submit" id="btnSimpanTambah" value="Simpan">
@@ -121,15 +139,16 @@
             </div>
         </div>
 
-        <!-- PopUp Edit Asisten -->
-        <div class="edit-asisten">
+        <!-- PopUp Edit Vendor -->
+        <div class="edit-vendor">
             <div class="popup-content">
-                <form id="formEdit" action="" method="">
-                    <h3>Edit Asisten</h3>
-                    <input type="text" id="editNama" name="nama-asisten" required>
-                    <input type="text" id="editAlamat" required>
-                    <input type="text" id="editKontak" required>
-                    <input type="email" id="editEmail" required>
+                <form id="formEditVendor" action="" method="">
+                    <h3>Edit Vendor</h3>
+                    <input type="text" id="namaPemilik" name="nama-pemilik" required>
+                    <input type="text" id="namaVendor" name="nama-vendor" required>
+                    <input type="text" id="alamat" name="alamat" required>
+                    <input type="number" id="kontak" name="kontak" required>
+                    <input type="text" id="jenisVendor" name="jenis-vendor" required>
                     <div>
                         <input type="button" id="btnCloseEdit" value="Tutup">
                         <input type="submit" id="btnSimpanEdit" value="Simpan">
@@ -138,8 +157,8 @@
             </div>
         </div>
         
-        <!-- PopUp Hapus Asisten -->
-        <div class="hapus-asisten">
+        <!-- PopUp Hapus Vendor -->
+        <div class="hapus-vendor">
             <div class="popup-content">
                 <h3>Konfirmasi Hapus</h3>
                 <p>Apakah Anda yakin ingin menghapus data ini?</p>
@@ -149,7 +168,6 @@
                 </div>
             </div>
         </div>
-
 
     </section>
 </body>
