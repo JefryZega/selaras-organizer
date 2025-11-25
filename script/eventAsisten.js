@@ -5,7 +5,7 @@ const btnClose = document.getElementById('btnCloseTambah');
 
 const formTambahEvent = document.getElementById('formTambahEvent');
 const btnSimpanTambah = document.getElementById('btnSimpanTambah');
-const tbody = document.querySelector('tbody');
+const tbody = document.querySelector('.table-container:nth-of-type(2) tbody');
 
 btnTambah.onclick = () => {
   popup.style.display = 'flex';
