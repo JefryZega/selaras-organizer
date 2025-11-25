@@ -5,15 +5,32 @@ DROP TABLE IF EXISTS JenisVendor;
 DROP TABLE IF EXISTS Event;
 DROP TABLE IF EXISTS Klien;
 DROP TABLE IF EXISTS Asisten;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS user_roles;
+
+-- Buat tabel Users
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,   -- untuk login
+    email VARCHAR(255) UNIQUE NOT NULL,     -- untuk komunikasi/notifikasi
+    password VARCHAR(255) NOT NULL,         -- hash bcrypt
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Buat tabel Roles
+CREATE TABLE user_roles (
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    role VARCHAR(20) NOT NULL CHECK (role IN ('PEMILIK', 'ASISTEN')),
+    PRIMARY KEY (user_id, role)
+);
 
 -- Buat tabel Asisten
 CREATE TABLE Asisten (
-    idasisten SERIAL PRIMARY KEY,
-    namaasisten VARCHAR(255),
-    passwordasisten VARCHAR(255),
-    alamatasisten VARCHAR(255),
-    kontakasisten VARCHAR(255),
-    emailasisten VARCHAR(255)
+    id SERIAL PRIMARY KEY,
+    nama VARCHAR(255) NOT NULL,
+    alamat VARCHAR(255),
+    kontak VARCHAR(255),
+    user_id INTEGER UNIQUE REFERENCES users(id) ON DELETE CASCADE
 );
 
 -- Buat tabel Klien
@@ -51,12 +68,12 @@ CREATE TABLE Event (
     jumlahundangan INTEGER,
     statusevent VARCHAR(255),
     idklien INTEGER REFERENCES Klien(idklien),
-    idasisten INTEGER REFERENCES Asisten(idasisten)
+    idasisten INTEGER REFERENCES Asisten(id)
 );
 
 -- Buat tabel Menangani
 CREATE TABLE Menangani (
-    idasisten INTEGER REFERENCES Asisten(idasisten),
+    idasisten INTEGER REFERENCES Asisten(id),
     idevent INTEGER REFERENCES Event(idevent),
     idvendor INTEGER REFERENCES Vendor(idvendor),
     hargadealing NUMERIC(15,2),
@@ -67,13 +84,34 @@ CREATE TABLE Menangani (
 
 --Masukkan tiap data
 
+-- Pemilik
+INSERT INTO users (username, email, password) VALUES
+('Budi Laraso', 'budi@selarasorganizer.com', '$2a$12$Q6EjAJNk.YW3pNoM.rqGz.dQba.eHkCVWP2zW1acO2LScsafmkKkm');
+
+INSERT INTO user_roles (user_id, role) VALUES (1, 'PEMILIK');
+
+-- Asisten
+INSERT INTO users (username, email, password) VALUES
+('Abigail Maharani', 'abigail@selarasorganizer.com', '$2a$12$4i0UXJg7j8ml4Y.S8PsO5u671bWBSNAYA7o3DtcQqZu9XxTWmtl52'),
+('Max Indrawan', 'max@selarasorganizer.com', '$2a$12$dXjLuUbMWvNKIDFoJkqUBeQ4fP438822WS2cfgslJ2Q9CaxulM9Na'),
+('Citra Lestari', 'citra@selarasorganizer.com', '$2a$12$ceKV79igwpYmdRkJIbPLHeE6hapyie.Y/qQim2mbbll3.7GUbz6i2'),
+('Dedi Wijaya', 'dedi@selarasorganizer.com', '$2a$12$26KZdj5l3StWtAJa6D36N.8cQaN7pwLBVKgJrPj86WR2n4Tr2Ow3S'),
+('Eka Prasetyo', 'eka@selarasorganizer.com', '$2a$12$vSj3.afkRnMrUMDdXUK99ONxUTFkK9.cSTc3nmoSMqsdI1ItJiloe');
+
+INSERT INTO user_roles (user_id, role) VALUES
+(2, 'ASISTEN'),
+(3, 'ASISTEN'),
+(4, 'ASISTEN'),
+(5, 'ASISTEN'),
+(6, 'ASISTEN');
+
 -- Insert data Asisten
-INSERT INTO Asisten (namaasisten, passwordasisten, alamatasisten, kontakasisten, emailasisten) VALUES
-('Rina Maharani', 'Asisten1', 'Jl. Merdeka No.10', '081234567890', 'rina@email.com'),
-('Budi Santoso', 'Asisten2', 'Jl. Sudirman No.20', '082345678901', 'budi@email.com'),
-('Citra Lestari', 'Asisten3', 'Jl. Diponegoro No.5', '083456789012', 'citra@email.com'),
-('Dedi Wijaya', 'Asisten4', 'Jl. Gajah Mada No.7', '084567890123', 'dedi@email.com'),
-('Eka Prasetyo', 'Asisten5', 'Jl. Soekarno Hatta No.9', '085678901234', 'eka@email.com');
+INSERT INTO Asisten (nama, alamat, kontak, user_id) VALUES
+('Abigail Shanie Maharani', 'Jl. Merdeka No.10', '081234567890', 2),
+('Maximilius Indrawan', 'Jl. Sudirman No.20', '082345678901', 3),
+('Citra Lestari', 'Jl. Diponegoro No.5', '083456789012', 4),
+('Dedi Eko Wijaya', 'Jl. Gajah Mada No.7', '084567890123', 5),
+('Eka Prasetyo Respati', 'Jl. Soekarno Hatta No.9', '085678901234', 6);
 
 -- Insert data Klien
 INSERT INTO Klien (namaklien, alamatklien, kontakklien) VALUES

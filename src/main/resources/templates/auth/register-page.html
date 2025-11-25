@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selaras Organizer</title>
-    <link rel="stylesheet" href="../styles/login-page.css">
+    <link rel="stylesheet" th:href="@{/css/register-page.css}"/>
 </head>
 <body>
     <header>
         <nav>
-            <img src="../assets/img/selaras-logo.png" alt="logo selaras organizer">
+            <img th:src="@{/img/selaras-logo.png}" alt="logo selaras organizer" />
             <ul>
-                <li><a href="home-page.html">Home</a></li>
+                <li><a th:href="@{home-page.html}">Home</a></li>
                 <li>Profile</li>
                 <li>Contact</li>
             </ul>
@@ -20,11 +20,11 @@
     </header>
     <section>
         <div class="hero-container">
-            <img src="../assets/img/selaras-logo.png" alt="">
+            <img th:src="@{/img/selaras-logo.png}" alt="logo selaras organizer" />
             <input type="text"  name="username" id="username" placeholder="Masukkan Username">
             <input type="text" name="password" id="password" placeholder="Masukkan Password">
-            <button>Login</button>
-            <p>Don't have an account? <a href="register-page.html">Register</a></p>
+            <button>Register</button>
+            <p>Already have an account? <a th:href="@{login-page.html}">Login</a></p>
         </div>
     </section>
 </body>
