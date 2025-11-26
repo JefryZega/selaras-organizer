@@ -98,6 +98,10 @@ a {
     margin: 2em;
 }
 
+.main-section::-webkit-scrollbar {
+    display: none;
+}
+
 .main-section > button:first-of-type {
     width: 8%;
     padding: 0.3em;
