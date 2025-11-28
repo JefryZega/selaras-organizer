@@ -18,14 +18,25 @@
             <button id="btn-started">Let's Get Started</button>
         </nav>
     </header>
-    <section>
-        <div class="hero-container">
-            <img src="../assets/img/selaras-logo.png" alt="">
-            <input type="text"  name="username" id="username" placeholder="Masukkan Username">
-            <input type="text" name="password" id="password" placeholder="Masukkan Password">
-            <button>Register</button>
-            <p>Already have an account? <a href="login-page.html">Login</a></p>
-        </div>
-    </section>
+    <main>
+        <section class="hero-container">
+            <div id="img-container">
+                <img src="../assets/img/selaras-logo.png" alt="">
+            </div>
+            <div id="form-container">
+                <form id="form-register" action="">
+                    <h1>Register</h1>
+                    <input type="text"  name="nama" id="nama" placeholder="Masukkan Nama">
+                    <input type="text"  name="alamat" id="alamat" placeholder="Masukkan Alamat">
+                    <input type="tel"  name="kontak" id="kontak" placeholder="Masukkan Kontak">
+                    <input type="text"  name="username" id="username" placeholder="Masukkan Username">
+                    <input type="email" name="email" id="email" placeholder="Masukkan Email">
+                    <input type="password" name="password" id="password" placeholder="Masukkan Password">
+                    <input type="submit" value="Register">
+                </form>
+                <p>Already have an account? <a href="login-page.html">Login</a></p>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
